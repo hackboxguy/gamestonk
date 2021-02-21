@@ -6,8 +6,20 @@ import tkinter as tk
 from tkinter.font import Font
 import requests
 import time
-finnhub_client = finnhub.Client(api_key="mysecretapikey")
-SYMBOL = 'GME'
+import re
+
+myvars = {}
+with open("/home/pi/gamestonk/settings.txt") as myfile:
+    for line in myfile:
+        name, var = line.split("=")
+        myvars[name.strip()] = var
+
+symbol = myvars["symbol"]
+symbol = re.sub(r"[\n\t\s]*", "", symbol)
+my_key=myvars["api_key"]
+my_key = re.sub(r"[\n\t\s]*", "", my_key)
+finnhub_client = finnhub.Client(api_key=my_key)
+
 class Gui(tk.Tk):
     """
     Main GUI designed for 3.5inch display.
@@ -90,8 +102,8 @@ class Gui(tk.Tk):
 
     def request(self):
         """ Query TheySaidSo API """
-        response = finnhub_client.quote(SYMBOL)
-        print(response["c"])
+        response = finnhub_client.quote(symbol)
+        #print(response["c"])
         return response
 
     def auto_update(self):

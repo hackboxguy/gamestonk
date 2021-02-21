@@ -1,0 +1,7 @@
+api_key=myfinnhubbapikey
+api_provider=finnhub
+symbol=GME
+upper_threshold=420.69
+upper_threshold_sound=/home/pi/gamestonk/buy.wav
+lower_threshold=39.9
+lower_threshold_sound=/home/pi/gamestonk/sell.wav
