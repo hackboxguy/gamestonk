@@ -25,7 +25,7 @@ systemctl start ssh 1>/dev/null 2>/dev/null
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "setting up autostart ................................. "
-mkdir -p .config/autostart/
+mkdir -p /home/pi/.config/autostart/
 cp /home/pi/gamestonk/gamestonk.desktop /home/pi/.config/autostart/
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
