@@ -13,8 +13,8 @@ test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing tkinter module............................. "
 apt-get install python3-tk
-git clone --quiet https://github.com/markbrody/tkinter-quotes.git /home/pi/gamestonk/ > /dev/null
-cd tkinter-quotes
+git clone --quiet https://github.com/markbrody/tkinter-quotes.git /home/pi/gamestonk/tkinter-quotes > /dev/null
+cd /home/pi/gamestonk/tkinter-quotes
 python3 -m pip install -q -r requirements.txt --user
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
@@ -28,7 +28,7 @@ cp rc.local /etc/
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing lcd module driver.......................... "
-git clone --quiet https://github.com/waveshare/LCD-show.git /home/pi/gamestonk/ > /dev/null
+git clone --quiet https://github.com/waveshare/LCD-show.git /home/pi/gamestonk/LCD-show > /dev/null
 cd LCD-show
 chmod +x LCD35-show
 #./LCD35-show 180
