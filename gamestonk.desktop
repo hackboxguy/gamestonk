@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Gamestonk monitor application
+Exec=/usr/bin/python3 /home/pi/gamestonk/gamestonk.py

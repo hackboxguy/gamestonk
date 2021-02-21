@@ -8,7 +8,7 @@ if [ $(id -u) -ne 0 ]; then
 fi
 
 printf "Installing finnhub modules............................ "
-pip -q install finnhub-python
+pip3 -q install finnhub-python
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing tkinter module............................. "
@@ -24,13 +24,14 @@ systemctl enable ssh 1>/dev/null 2>/dev/null
 systemctl start ssh 1>/dev/null 2>/dev/null
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
-printf "Customizing rc.local ................................... "
-cp /home/pi/gamestonk/rc.local /etc/
+printf "setting up autostart ................................. "
+mkdir -p .config/autostart/
+cp /home/pi/gamestonk/gamestonk.desktop /home/pi/.config/autostart/
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing lcd module driver.......................... "
 git clone --quiet https://github.com/waveshare/LCD-show.git /home/pi/gamestonk/LCD-show > /dev/null
 cd /home/pi/gamestonk/LCD-show
 chmod +x LCD35-show
-#./LCD35-show 180
+./LCD35-show 180
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
