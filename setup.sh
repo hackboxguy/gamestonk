@@ -13,6 +13,7 @@ test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing tkinter module............................. "
 apt-get install python3-tk
+DEBIAN_FRONTEND=noninteractive apt-get install -qq python3-tk < /dev/null > /dev/null
 git clone --quiet https://github.com/markbrody/tkinter-quotes.git /home/pi/gamestonk/tkinter-quotes > /dev/null
 cd /home/pi/gamestonk/tkinter-quotes
 python3 -m pip install -q -r requirements.txt --user
@@ -24,12 +25,12 @@ systemctl start ssh 1>/dev/null 2>/dev/null
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Customizing rc.local ................................... "
-cp rc.local /etc/
+cp /home/pi/gamestonk/rc.local /etc/
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
 
 printf "Installing lcd module driver.......................... "
 git clone --quiet https://github.com/waveshare/LCD-show.git /home/pi/gamestonk/LCD-show > /dev/null
-cd LCD-show
+cd /home/pi/gamestonk/LCD-show
 chmod +x LCD35-show
 #./LCD35-show 180
 test 0 -eq $? && echo "[OK]" || echo "[FAIL]"
